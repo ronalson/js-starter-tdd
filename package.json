@@ -1,0 +1,59 @@
+{
+  "name": "js-tdd-starter",
+  "version": "1.0.0",
+  "description": "JS Starter-Kit with Tests",
+  "main": "index.js",
+  "scripts": {
+    "clear": "rimraf lib",
+    "build": "npm run clear && ./node_modules/.bin/babel --out-dir lib src",
+    "build:watch": "npm run build -- --watch",
+    "lint": "./node_modules/.bin/eslint src/**/*.js",
+    "test": "mocha --recursive --require babel-register",
+    "test:watch": "mocha --recursive --require babel-register --reporter min --watch",
+    "test:coverage": "nyc npm test",
+    "prepush": "npm run lint && npm run test:coverage"
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "test/**/*.js"
+    ],
+    "check-coverage": true,
+    "functions": 80,
+    "lines": 80
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ronalson/js-tdd-starter.git"
+  },
+  "keywords": [
+    "js",
+    "tdd",
+    "library"
+  ],
+  "author": "Ronalson Filho <contact@ronalson.com.br>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ronalson/js-tdd-starter/issues"
+  },
+  "homepage": "https://github.com/ronalson/js-tdd-starter#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.15.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
+    "mocha": "^4.1.0",
+    "nyc": "^11.4.1",
+    "rimraf": "^2.6.2"
+  }
+}
